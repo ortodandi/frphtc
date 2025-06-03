@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- FRP Status Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/frp_status"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvFrpStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Unknown"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnCheckFrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_frp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnRemoveFrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_frp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Google Accounts Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/google_accounts"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvGoogleAccounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Unknown"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnCheckAccounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_accounts"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Partition Information Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/partition_info"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvPartitionInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Unknown"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnCheckPartitions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_partitions"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Bootloader Status Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootloader_status"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvBootloaderStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Unknown"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnCheckBootloader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_bootloader"
+            android:layout_marginTop="8dp"/>
+
+        <!-- ADB Commands Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/adb_commands"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/etAdbCommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Enter ADB command"
+            android:inputType="text"/>
+
+        <TextView
+            android:id="@+id/tvAdbResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnExecuteAdb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/execute_adb"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

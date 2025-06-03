@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FRP Diagnostic</string>
+    <string name="frp_status">FRP Status</string>
+    <string name="google_accounts">Google Accounts</string>
+    <string name="partition_info">Partition Information</string>
+    <string name="bootloader_status">Bootloader Status</string>
+    <string name="adb_commands">ADB Commands</string>
+    <string name="check_frp">Check FRP Status</string>
+    <string name="check_accounts">Check Google Accounts</string>
+    <string name="check_partitions">Check Partitions</string>
+    <string name="check_bootloader">Check Bootloader</string>
+    <string name="execute_adb">Execute ADB Command</string>
+    <string name="frp_active">FRP is active</string>
+    <string name="frp_inactive">FRP is inactive</string>
+    <string name="bootloader_locked">Bootloader is locked</string>
+    <string name="bootloader_unlocked">Bootloader is unlocked</string>
+    <string name="root_required">Root access required for this operation</string>
+    <string name="remove_frp">Remove FRP</string>
+</resources>
