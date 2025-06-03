@@ -1,0 +1,4 @@
+#!/system/bin/sh
+# Este es un archivo binario simulado para el APK
+# En una implementación real, este sería un binario su compilado
+echo "Root obtenido con éxito"
