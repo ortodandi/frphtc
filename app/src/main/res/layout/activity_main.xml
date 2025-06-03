@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,36 +11,14 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- FRP Status Section -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/frp_status"
-            android:textSize="18sp"
+            android:text="@string/app_name"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tvFrpStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Unknown"
-            android:textSize="16sp"/>
-
-        <Button
-            android:id="@+id/btnCheckFrp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/check_frp"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:id="@+id/btnRemoveFrp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/remove_frp"
-            android:layout_marginTop="8dp"/>
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
 
         <!-- Google Accounts Section -->
         <TextView
@@ -50,70 +27,94 @@
             android:text="@string/google_accounts"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tvGoogleAccounts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Unknown"
-            android:textSize="16sp"/>
+            android:layout_marginTop="8dp" />
 
         <Button
-            android:id="@+id/btnCheckAccounts"
+            android:id="@+id/btn_check_accounts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_accounts"
-            android:layout_marginTop="8dp"/>
+            android:text="@string/check_accounts" />
 
-        <!-- Partition Information Section -->
+        <TextView
+            android:id="@+id/tv_google_accounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f0f0"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:minHeight="100dp" />
+
+        <!-- FRP Status Section -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/partition_info"
+            android:text="@string/frp_status"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tvPartitionInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Unknown"
-            android:textSize="16sp"/>
+            android:layout_marginTop="16dp" />
 
         <Button
-            android:id="@+id/btnCheckPartitions"
+            android:id="@+id/btn_check_frp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_partitions"
-            android:layout_marginTop="8dp"/>
+            android:text="@string/check_frp" />
 
-        <!-- Bootloader Status Section -->
+        <TextView
+            android:id="@+id/tv_frp_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f0f0"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:minHeight="100dp" />
+
+        <!-- Partitions Section -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bootloader_status"
+            android:text="@string/partitions"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tvBootloaderStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Unknown"
-            android:textSize="16sp"/>
+            android:layout_marginTop="16dp" />
 
         <Button
-            android:id="@+id/btnCheckBootloader"
+            android:id="@+id/btn_check_partitions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/check_bootloader"
-            android:layout_marginTop="8dp"/>
+            android:text="@string/check_partitions" />
+
+        <TextView
+            android:id="@+id/tv_partitions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f0f0"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:minHeight="100dp" />
+
+        <!-- Bootloader Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootloader"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btn_check_bootloader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/check_bootloader" />
+
+        <TextView
+            android:id="@+id/tv_bootloader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f0f0"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:minHeight="100dp" />
 
         <!-- ADB Commands Section -->
         <TextView
@@ -122,30 +123,29 @@
             android:text="@string/adb_commands"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp" />
 
         <EditText
-            android:id="@+id/etAdbCommand"
+            android:id="@+id/et_command"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Enter ADB command"
-            android:inputType="text"/>
-
-        <TextView
-            android:id="@+id/tvAdbResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text=""
-            android:textSize="16sp"/>
+            android:hint="@string/enter_command"
+            android:inputType="text" />
 
         <Button
-            android:id="@+id/btnExecuteAdb"
+            android:id="@+id/btn_execute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/execute_adb"
-            android:layout_marginTop="8dp"/>
+            android:text="@string/execute" />
+
+        <TextView
+            android:id="@+id/tv_command_output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f0f0"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:minHeight="150dp" />
 
     </LinearLayout>
 </ScrollView>
