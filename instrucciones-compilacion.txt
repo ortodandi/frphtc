@@ -1,0 +1,66 @@
+# Instrucciones para compilar el APK de FRP Diagnostic Tool
+
+## Requisitos previos
+- Android Studio (versión 2.2 o superior)
+- JDK 8
+- SDK de Android con API 24 (Android 7.0 Nougat)
+
+## Pasos para compilar el APK
+
+1. **Clonar el repositorio**
+   - `git clone https://github.com/ortodandi/frphtc.git`
+   - `cd frphtc`
+
+2. **Abrir el proyecto en Android Studio**
+   - Abre Android Studio
+   - Selecciona "Open an existing Android Studio project"
+   - Navega hasta la carpeta donde clonaste el repositorio y selecciona la carpeta raíz
+
+3. **Configurar el SDK**
+   - En Android Studio, ve a File > Project Structure
+   - En la sección "SDK Location", asegúrate de que esté seleccionado el SDK de Android correcto
+   - En la sección "Project", asegúrate de que:
+     * Compile SDK Version: API 24
+     * Build Tools Version: 24.0.3 o superior
+     * Min SDK Version: API 24
+     * Target SDK Version: API 24
+
+4. **Sincronizar el proyecto con Gradle**
+   - Haz clic en "Sync Now" cuando Android Studio te lo solicite
+   - Espera a que se complete la sincronización
+
+5. **Compilar el APK**
+   - Ve a Build > Build Bundle(s) / APK(s) > Build APK(s)
+   - Espera a que se complete la compilación
+
+6. **Localizar el APK generado**
+   - Una vez completada la compilación, Android Studio mostrará una notificación
+   - Haz clic en "locate" para abrir la carpeta donde se generó el APK
+   - El APK se encontrará en: `app/build/outputs/apk/debug/app-debug.apk`
+
+7. **Instalar en el dispositivo**
+   - Transfiere el APK a tu dispositivo HTC One M9
+   - En el dispositivo, habilita "Fuentes desconocidas" en Configuración > Seguridad
+   - Instala el APK tocándolo en el administrador de archivos del dispositivo
+
+## Solución de problemas
+
+Si encuentras errores durante la compilación:
+
+1. **Problemas con las dependencias**
+   - Asegúrate de tener instalado el SDK de Android para API 24
+   - Verifica que las dependencias en el archivo build.gradle sean correctas
+
+2. **Errores de compilación**
+   - Revisa la consola de Android Studio para ver los errores específicos
+   - Asegúrate de tener instalada la versión correcta de JDK (Java 8)
+
+3. **Problemas con Gradle**
+   - Intenta actualizar Gradle a la última versión compatible
+   - Ejecuta "Clean Project" y luego intenta compilar nuevamente
+
+## Notas adicionales
+
+- Esta aplicación requiere permisos especiales y acceso root para algunas funcionalidades
+- La aplicación está diseñada específicamente para el modelo HTC One M9 con Android 7.0 Nougat
+- Utiliza la aplicación solo en un entorno controlado y para fines de diagnóstico
